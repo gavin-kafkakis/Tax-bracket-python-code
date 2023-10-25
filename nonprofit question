@@ -1,0 +1,30 @@
+donation1 = float(input("Total from the first donation: "))
+largest_donation = donation1
+donation2 = float(input("Total from the second donation: "))
+if donation2 > largest_donation: 
+    largest_donation = donation2
+donation3 = float(input("Total from the third donation: "))
+if donation3 > largest_donation:
+    largest_donation = donation3
+donation4 = float(input("Total from the fourth donation: "))
+if donation4 > largest_donation: 
+    largest_donation = donation4
+donation5 = float(input("Total from the fifth donation: "))
+if donation5 > largest_donation:
+    largest_donation = donation5 
+
+total_donation = donation1 + donation2 + donation3 + donation4 + donation5
+
+donation_goal = 10000
+average_donation = (donation1 + donation2 + donation3 + donation4 + donation5) / 5
+
+if total_donation >= donation_goal: 
+    print("The largest donation was $", round(largest_donation, 2))
+    print("The average donation was $", round(average_donation, 2))
+    print("You have met the goal of reaching $10000. ")
+else: 
+    print("You have not met the goal of reaching $10000 through donations. ")
+    new_total_donation = 10000 - total_donation 
+    average_needed_donation = new_total_donation / 5 
+    print("You will need to average $", round(average_needed_donation, 2), "over the next 5 donations in order to reach your goal of $10000")
+    
