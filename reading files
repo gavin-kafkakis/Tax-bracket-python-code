@@ -1,0 +1,19 @@
+file1 = input("File1: ")
+file2 = input("File2: ")
+fh1 = open(file1, "r")
+fh2 = open(file2, "r")
+file1_lines = 0 
+file2_lines = 0 
+for line in fh1: 
+    file1_lines += 1 
+for line in fh2: 
+    file2_lines += 1
+if file1_lines > file2_lines: 
+    print(file1, "has", file1_lines - file2_lines, "lesser lines than", file2)
+elif file1_lines == file2_lines: 
+    print(file2, "has the same amount of lines as", file1)
+else: 
+    print(file1, "has", file2_lines - file1_lines, "lesser lines than", file2)
+
+fh1.close
+fh2.close
