@@ -1,0 +1,16 @@
+phonePrice = float(input("What was the price of the phone: "))
+newCustomer = input("If new customer type 'New': ")
+if newCustomer == 'New':
+    if phonePrice > 1000: 
+        commission = phonePrice * 0.02
+        commission = commission + 20
+    else: 
+        commission = phonePrice * 0.01
+        commission = commission + 10 
+else: 
+    if phonePrice > 1000: 
+        commission = phonePrice * 0.02
+    else: 
+        commission = phonePrice * 0.01
+
+print("Sale was $", "%.2f" % (phonePrice), "with a", "%.2f" % (commission), "commission")
