@@ -1,0 +1,8 @@
+fh = open('2020_population.csv')
+country = input("Country name: ")
+for line in fh:
+    if line.startswith(country):
+        position = line.rfind(",") #trying to find the last comma 
+        percent_pop = line[position + 1: ] 
+ 
+print(country, "has", percent_pop,"of the world population.")
