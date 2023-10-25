@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep  7 17:05:53 2023
+
+@author: gavin
+"""
+
+income = float(input("How much is your annual income?"))
+# mfj stands for "married filing joingtly"
+mfj = bool(input("If you are married filing jointly, type 'True', otherwise press enter"))
+if mfj == True:
+    spouse_income = float(input("Please insert the income of your spouse."))
+    income = income + spouse_income
+
+else: #if you are single 
+    spouse_income = 0
+    income = income + spouse_income
+
+# max tax for mfj
+
+max_tax_mfj_1 = 528.00
+max_tax_mfj_2 = 2841.60
+max_tax_mfj_3 = 7971.60
+
+# max tax for single
+max_tax_single_1 = 264.00
+max_tax_single_2 = 1420.80
+max_tax_single_3 = 3985.80
+
+
+if mfj == True :
+    if income <= 12000:
+        state_tax = (income * 0.0440)
+    
+    elif (income > 12000) and (income <= 60000):
+        state_tax = max_tax_mfj_1 + (income - 12000)* 0.0482
+    
+    elif (income > 60000) and (income <= 150000):
+        state_tax = max_tax_mfj_2 + (income - 60000)*0.0570
+        
+    else: #income is greater than 150000
+        state_tax = max_tax_mfj_3 + (income - 150000)*0.0600
+
+else: # if the taxpayer is single 
+    if income <= 6000:
+        state_tax = (income * 0.0440)
+    
+    if (income > 6000) and (income <= 30000):
+        state_tax = max_tax_single_1 + (income - 6000)*0.0482
+    
+    elif (income > 30000) and (income <= 75000):
+        state_tax = max_tax_single_2 + (income - 30000)*0.0570
+    
+    else: # if income is greater than 75000
+        state_tax = max_tax_single_3 + (income - 75000)*0.0600
+        
+
+        
+
+#federal tax 
+# max federal tax for mfj
+max_tax_mfj_federal_1 = 2200.00
+max_tax_mfj_federal_2 = 10294.00
+max_tax_mfj_federal_3 = 32580.00
+max_tax_mfj_federal_4 = 74208.00
+max_tax_mfj_federal_5 = 105664.00
+max_tax_mfj_federal_6 = 186601.50
+
+# max tax for federal tax for single 
+max_tax_single_federal_1 = 1100.00
+max_tax_single_federal_2 = 5147.00
+max_tax_single_federal_3 = 16290.00
+max_tax_single_federal_4 = 37104.00
+max_tax_single_federal_5 = 52832.00
+max_tax_single_federal_6 = 174238.25
+
+
+if mfj == True:
+    new_income = income - 27700
+    if new_income <= 0:     
+        federal_tax = 0 
+    
+    if new_income <= 22000:
+        federal_tax = (new_income * 0.10)
+    
+    elif (new_income > 22000) and (new_income <= 89450):
+        federal_tax = max_tax_mfj_federal_1 + (new_income - 22000)*0.120
+        
+    elif (new_income > 89450) and (new_income <= 190750):
+         federal_tax = max_tax_mfj_federal_2 + (new_income - 89450)*0.220
+    
+    elif (new_income > 190750) and (new_income <= 364200):
+        federal_tax = max_tax_mfj_federal_3 + (new_income - 190750)*0.240
+    
+    elif (new_income > 364200) and (new_income <= 462500):
+        federal_tax = max_tax_mfj_federal_4 + (new_income - 364200)*0.320
+        
+    elif (new_income > 462500) and (new_income <= 693750):
+         federal_tax = max_tax_mfj_federal_5 + (new_income - 462500)*0.350
+    
+    else:
+        federal_tax = max_tax_mfj_federal_6 + (new_income - 693750)*0.370
+
+else:
+    new_income = income - 13850
+
+if new_income <= 0: 
+    federal_tax = 0 
+    
+    if new_income <= 11000:
+        federal_tax = (new_income * 0.100)
+    
+    elif (new_income > 11000) and (new_income <= 44725):
+        federal_tax = max_tax_single_federal_1 + (new_income - 11000)*0.120
+        
+    elif (new_income > 44725) and (new_income <= 95375):
+        federal_tax = max_tax_single_federal_2 + (new_income - 44725)*0.220
+        
+    elif (new_income > 95375) and (new_income <= 18210040):
+        federal_tax = max_tax_single_federal_3 + (new_income - 95375)*0.240
+        
+    elif (new_income > 182100) and (new_income <= 231250):
+        federal_tax = max_tax_single_federal_4 + (new_income -182100)*0.320
+        
+    elif (new_income > 231250) and (new_income <= 578125):
+        federal_tax = max_tax_single_federal_5 + (new_income - 231250)*0.350
+        
+    else: # only for income over 578125
+        federal_tax = max_tax_single_federal_6 + (new_income - 578125)*0.370
+  
+if state_tax > 0:
+    print("Your state tax owed for Iowa in 2023 was $", round(state_tax, 2))
+else: 
+    print("You owe $0 in state taxs for the state of Iowa in 2023.")
+
+if federal_tax > 0:
+    print("Your federal tax owed for 2023 was $", round(federal_tax, 2))
+else: 
+    print("You owe $0 in federal taxes for 2023.")
+
+total_tax = state_tax + federal_tax
+
+print("Your total tax owed for 2023 was $", round(total_tax,2))
