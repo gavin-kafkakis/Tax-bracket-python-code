@@ -1,0 +1,13 @@
+# opening a new external file and then creating an open list
+# then finding the different positions of the data in the csv file
+# using that line.find to add the company in each line and then printing at the end the number company that is wanted to be found on the fortune 1000 file
+
+fh = open("Fortune_1000.csv")
+fortune_list = []
+for line in fh: 
+    position = line.find(",")
+    company = line[:position]
+    fortune_list.append(company)
+
+print(fortune_list[445])
+    
