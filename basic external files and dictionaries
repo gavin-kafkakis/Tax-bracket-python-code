@@ -1,0 +1,14 @@
+# opening an external file, reading the information on that file, counting how many times each name appears in that file, and then adding it to an empty dictionary 
+# at the end printing the output which is the dictionary 
+
+fh = open('first_half_tackles.txt') 
+tackles = dict()
+for line in fh: 
+    names = line.split()
+    for name in names: 
+        if name not in tackles: 
+            tackles[name] = 1 
+        else: 
+            tackles[name] = tackles[name] + 1 
+            
+print(tackles)
