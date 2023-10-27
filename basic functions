@@ -1,0 +1,15 @@
+# using functions to define variables and then going to the main function to return and get the outputs, then running the funcation at the end 
+
+
+def get_max(list_of_numbers): 
+    biggest = 0
+    for x in list_of_numbers: 
+        if x > biggest:
+            biggest = x
+    return biggest 
+def main():
+    list1 =[1,5,7,100]
+    maximum = get_max(list1)
+    print(maximum) 
+    
+main()
