@@ -1,0 +1,19 @@
+# opening new files and appending new information onto the end of the file, then closing the file 
+# opening the file again, but this time writing over the whole file then closing 
+# then doing that all over again 
+
+fh = open("imaginary_file.txt", 'a')
+fh.write("\nanother one")
+
+fh.close
+
+
+fh = open("imaginary_file.txt", 'w')
+fh.write("Hope this works!")
+
+fh.close
+
+fh = open("imaginary_file.txt", 'w')
+fh.write("Maybe it'll work this time")
+
+fh.close
