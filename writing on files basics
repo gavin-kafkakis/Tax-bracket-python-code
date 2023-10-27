@@ -1,0 +1,19 @@
+# opening a fight song file, counting each line that is in that file and then printing how many lines are in that file 
+# Then moving on to writing on that file with these new lines, and reading and printing the length of that new file, and then closing the file 
+
+fh = open("fightsong.txt","r")
+
+count = 0
+for i in fh:
+    count += 1
+    if count ==8: 
+        print(i)
+ 
+fh.write("Good thing for special teams")
+fh.write("\nGood thing for defense")
+
+text_file = fh.read()
+print(len(text_file))
+
+
+fh.close() 
