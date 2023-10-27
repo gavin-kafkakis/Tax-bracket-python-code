@@ -1,0 +1,21 @@
+# calculate the monthly interest based on the monthly payments and the rate, then at the end calculate the total number of months
+# and the total interest payed over those months while the balance on the loan is above $0 
+
+
+balance = float(input("What is your balance: "))
+monthlyPayment = float(input("What is your monthly payment: "))
+monthlyRate = float(input("What is your monthly interest (0.005 for example): "))
+totalInterest = 0 
+numMonths = 0 
+
+while balance > 0: 
+    monthlyInterest = balance * monthlyRate
+    totalInterest += monthlyInterest
+    balance += monthlyInterest 
+    balance -= monthlyPayment 
+    numMonths += 1
+    if monthlyPayment <= monthlyInterest:
+        break 
+
+print("total nunber of months: ", "%d" % (numMonths))
+print("Total interest paid: ", "%.2f" % (totalInterest))
